@@ -3,38 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tela.manutencao.touro;
-import tela.listagem.touro.ListagemTouro;
+package tela.manutencao.raca;
+import tela.listagem.raca.ListagemRaca;
 /**
  *
  * @author 8
  */
-public class ManutencaoTouro extends javax.swing.JDialog {
-    public ListagemTouro listagem;
+public class ManutencaoRaca extends javax.swing.JDialog {
+public ListagemRaca listagem;
     /**
-     * Creates new form ManutencaoTouro
+     * Creates new form ManutencaoRaca
      */
-    public ManutencaoTouro(java.awt.Frame parent, boolean modal) {
+    public ManutencaoRaca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
- public ManutencaoTouro(java.awt.Frame parent, boolean modal, ListagemTouro listagem) {
+ public ManutencaoRaca(java.awt.Frame parent, boolean modal, ListagemRaca listagem) {
         super(parent, modal);
         initComponents();
         this.listagem = listagem;
         
-        jtfCodigo_Touro.setEnabled(false);  //desabilitando a edição do campo código
+        jtfCodigoRaca.setEnabled(false);  //desabilitando a edição do campo código
         btnAlterar.setEnabled(false); //desabilitando o botão alterar
         btnExcluir.setEnabled(false); //desabilitando o botão excluir
   }
-  public ManutencaoTouro(java.awt.Frame parent, boolean modal, ListagemTouro listagem, int pk) {
+ public ManutencaoRaca(java.awt.Frame parent, boolean modal, ListagemRaca listagem, int pk) {
         super(parent, modal);
         initComponents();
         
-        jtfCodigo_Touro.setEnabled(false);  //desabilitando a edição do campo código
+        jtfCodigoRaca.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
-        controlador.touro.ControladorTouro.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
+        controlador.raca.ControladorRaca.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,9 +48,11 @@ public class ManutencaoTouro extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jtfCodigo_Touro = new javax.swing.JTextField();
-        jtfNome_Touro = new javax.swing.JTextField();
-        btnCancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jtfCodigoRaca = new javax.swing.JTextField();
+        jtfNomeRaca = new javax.swing.JTextField();
+        jtfCodTouro = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -58,13 +60,15 @@ public class ManutencaoTouro extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Manuetnção Touro");
+        jLabel1.setText("Manutenção Raça");
 
         jLabel2.setText("Código:");
 
         jLabel3.setText("Nome:");
 
-        btnCancelar.setText("Cancelar");
+        jLabel4.setText("Código do Touro:");
+
+        jButton1.setText("Cancelar");
 
         btnAdicionar.setText("Adicionar");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,63 +96,75 @@ public class ManutencaoTouro extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtfNome_Touro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                                .addComponent(jtfCodigo_Touro, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGap(92, 92, 92)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAdicionar)
+                        .addContainerGap()
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addComponent(jtfCodTouro, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(27, 27, 27)
+                                .addComponent(btnAdicionar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnAlterar)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnExcluir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jtfNomeRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfCodigoRaca, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jtfCodigo_Touro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jtfCodigoRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jtfNome_Touro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                    .addComponent(jtfNomeRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelar)
+                    .addComponent(jLabel4)
+                    .addComponent(jtfCodTouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
                     .addComponent(btnAdicionar)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(0, 96, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-controlador.touro.ControladorTouro.inserir(this);        // TODO add your handling code here:
+controlador.raca.ControladorRaca.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-controlador.touro.ControladorTouro.alterar(this);        // TODO add your handling code here:
+controlador.raca.ControladorRaca.alterar(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-controlador.touro.ControladorTouro.excluir(this);        // TODO add your handling code here:
+controlador.raca.ControladorRaca.excluir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
@@ -168,20 +184,20 @@ controlador.touro.ControladorTouro.excluir(this);        // TODO add your handli
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ManutencaoTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManutencaoRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ManutencaoTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManutencaoRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ManutencaoTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManutencaoRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ManutencaoTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManutencaoRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ManutencaoTouro dialog = new ManutencaoTouro(new javax.swing.JFrame(), true);
+                ManutencaoRaca dialog = new ManutencaoRaca(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -196,12 +212,14 @@ controlador.touro.ControladorTouro.excluir(this);        // TODO add your handli
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAdicionar;
     public javax.swing.JButton btnAlterar;
-    public javax.swing.JButton btnCancelar;
     public javax.swing.JButton btnExcluir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    public javax.swing.JTextField jtfCodigo_Touro;
-    public javax.swing.JTextField jtfNome_Touro;
+    private javax.swing.JLabel jLabel4;
+    public javax.swing.JTextField jtfCodTouro;
+    public javax.swing.JTextField jtfCodigoRaca;
+    public javax.swing.JTextField jtfNomeRaca;
     // End of variables declaration//GEN-END:variables
 }

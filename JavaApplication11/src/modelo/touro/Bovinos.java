@@ -5,6 +5,8 @@
  */
 package modelo.touro;
 
+import java.util.Objects;
+
 /**
  *
  * @author 8
@@ -12,6 +14,31 @@ package modelo.touro;
 public class Bovinos {
     private Integer codigo;
     private String nome;
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 37 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Bovinos other = (Bovinos) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
+    }
 
     public Integer getCodigo() {
         return codigo;

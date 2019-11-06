@@ -3,29 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador.touro;
-import dao.touro.DaoTouro;
+package controlador.raca;
+
+import tela.manutencao.raca.ManutencaoRaca;
+import dao.raca.DaoRaca;
 import javax.swing.JOptionPane;
-import modelo.touro.Bovinos;
-import tela.manutencao.touro.ManutencaoTouro;
-import tela.manutencao.touro.ManutencaoTouro;
+import modelo.raca.Raca;
+import tela.manutencao.raca.ManutencaoRaca;
 import java.util.List;
 
 import java.util.Vector;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author 8
  */
-public class ControladorTouro {
+public class ControladorRaca {
 
-    public static void inserir(ManutencaoTouro man){
-        Bovinos objeto = new Bovinos();
-        objeto.setNome(man.jtfNome_Touro.getText());
+    public static void inserir(ManutencaoRaca man){
+        Raca objeto = new Raca();
+        objeto.setCod_touro((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setNome(man.jtfNomeRaca.getText());
         
-        boolean resultado = DaoTouro.inserir(objeto);
+        boolean resultado = DaoRaca.inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
             if (man.listagem != null) {
@@ -37,13 +38,14 @@ man.dispose();//fechar a tela da manutenção
         }
 }
 
-    public static void alterar(ManutencaoTouro man){
-        Bovinos objeto = new Bovinos();
+   public static void alterar(ManutencaoRaca man){
+        Raca objeto = new Raca();
         //definir todos os atributos
-        objeto.setCodigo(Integer.parseInt(man.jtfCodigo_Touro.getText()));
-        objeto.setNome(man.jtfNome_Touro.getText());
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigoRaca.getText()));
+        objeto.setNome(man.jtfNomeRaca.getText());
+        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
         
-        boolean resultado = DaoTouro.alterar(objeto);
+        boolean resultado = DaoRaca.alterar(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
             if (man.listagem != null) {
@@ -54,12 +56,11 @@ man.dispose();//fechar a tela da manutenção
             JOptionPane.showMessageDialog(null, "Erro!");
         }
     }
-
-   public static void excluir(ManutencaoTouro man){
-        Bovinos objeto = new Bovinos();
-        objeto.setCodigo(Integer.parseInt(man.jtfCodigo_Touro.getText())); //só precisa definir a chave primeira
+public static void excluir(ManutencaoRaca man){
+        Raca objeto = new Raca();
+        objeto.setCodigo(Integer.parseInt(man.jtfCodigoRaca.getText())); //só precisa definir a chave primeira
         
-        boolean resultado = DaoTouro.excluir(objeto);
+        boolean resultado = DaoRaca.excluir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
             if (man.listagem != null) {
@@ -75,24 +76,28 @@ public static void atualizarTabela(JTable tabela) {
         //definindo o cabeçalho da tabela
         modelo.addColumn("Codigo");
         modelo.addColumn("Nome");
-        List<Bovinos> resultados = DaoTouro.consultar();
-        for (Bovinos objeto : resultados) {
+        modelo.addColumn("Codigo do Touro");
+        List<Raca> resultados = DaoRaca.consultar();
+        for (Raca objeto : resultados) {
             Vector linha = new Vector();
             
             //definindo o conteúdo da tabela
             linha.add(objeto.getCodigo());
             linha.add(objeto.getNome());
+            linha.add(objeto.getCod_touro());
+            
             modelo.addRow(linha); //adicionando a linha na tabela
         }
         tabela.setModel(modelo);
     }
-    public static void atualizaCampos(ManutencaoTouro man, int pk){ 
-        Bovinos objeto = DaoTouro.consultar(pk);
+public static void atualizaCampos(ManutencaoRaca man, int pk){ 
+        Raca objeto = DaoRaca.consultar(pk);
         //Definindo os valores do campo na tela (um para cada atributo/campo)
-        man.jtfCodigo_Touro.setText(objeto.getCodigo().toString());
-        man.jtfNome_Touro.setText(objeto.getNome());
+        man.jtfCodigoRaca.setText(objeto.getCodigo().toString());
+        man.jtfNomeRaca.setText(objeto.getNome());
+        man.jcbTipo.setSelectedItem(objeto.getCod_touro());
         
-        man.jtfCodigo_Touro.setEnabled(false); //desabilitando o campo código
+        man.jtfCodigoRaca.setEnabled(false); //desabilitando o campo código
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
 }

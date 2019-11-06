@@ -3,22 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tela.listagem.touro;
-import controlador.touro.ControladorTouro;
-import tela.manutencao.touro.ManutencaoTouro;
+package tela.listagem.raca;
+import controlador.raca.ControladorRaca;
+import tela.manutencao.raca.ManutencaoRaca;
 /**
  *
  * @author 8
  */
-public class ListagemTouro extends javax.swing.JDialog {
+public class ListagemRaca extends javax.swing.JDialog {
 
     /**
-     * Creates new form ListagemTouro
+     * Creates new form ListagemRaca
      */
-    public ListagemTouro(java.awt.Frame parent, boolean modal) {
+    public ListagemRaca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        ControladorTouro.atualizarTabela(tabela);
+        ControladorRaca.atualizarTabela(tabela);
     }
 
     /**
@@ -33,12 +33,12 @@ public class ListagemTouro extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        btnNovoTouro = new javax.swing.JButton();
+        btnNovo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Listagem Touro");
+        jLabel1.setText("Listagem Raça");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,10 +58,10 @@ public class ListagemTouro extends javax.swing.JDialog {
         });
         jScrollPane1.setViewportView(tabela);
 
-        btnNovoTouro.setText("Novo");
-        btnNovoTouro.addActionListener(new java.awt.event.ActionListener() {
+        btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNovoTouroActionPerformed(evt);
+                btnNovoActionPerformed(evt);
             }
         });
 
@@ -69,36 +69,35 @@ public class ListagemTouro extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(btnNovoTouro)
-                .addGap(9, 9, 9))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(99, 99, 99)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnNovo)
+                .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(btnNovoTouro))
+                    .addComponent(btnNovo))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnNovoTouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoTouroActionPerformed
-ManutencaoTouro manutencao = new ManutencaoTouro(null, true, this);
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+ManutencaoRaca manutencao = new ManutencaoRaca(null, true, this);
 manutencao.setVisible(true);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNovoTouroActionPerformed
+    }//GEN-LAST:event_btnNovoActionPerformed
 
     private void tabelaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaMousePressed
 if (evt.getClickCount() == 2) {
@@ -107,7 +106,7 @@ if (evt.getClickCount() == 2) {
             //obtém a chave primária
             int pk = Integer.parseInt(tabela.getValueAt(linhaSelecionada, 0).toString()); //pk está na coluna 0
             //abre a manutenção
-            ManutencaoTouro manutencao = new ManutencaoTouro(null, true, this, pk);
+            ManutencaoRaca manutencao = new ManutencaoRaca(null, true, this, pk);
             manutencao.setVisible(true);
 }        // TODO add your handling code here:
     }//GEN-LAST:event_tabelaMousePressed
@@ -129,20 +128,20 @@ if (evt.getClickCount() == 2) {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListagemTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListagemRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListagemTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListagemRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListagemTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListagemRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListagemTouro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListagemRaca.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ListagemTouro dialog = new ListagemTouro(new javax.swing.JFrame(), true);
+                ListagemRaca dialog = new ListagemRaca(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -155,7 +154,7 @@ if (evt.getClickCount() == 2) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnNovoTouro;
+    public javax.swing.JButton btnNovo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTable tabela;
