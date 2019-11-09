@@ -5,6 +5,8 @@
  */
 package modelo.raca;
 
+import java.util.Objects;
+
 /**
  *
  * @author 8
@@ -12,7 +14,40 @@ package modelo.raca;
 public class Raca {
     private Integer codigo;
     private String nome;
-    private Integer cod_touro;
+    private cod_touro tipo;
+
+    public cod_touro getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(cod_touro tipo) {
+        this.tipo = tipo;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 53 * hash + Objects.hashCode(this.codigo);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Raca other = (Raca) obj;
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        return true;
+    }
     
     public Integer getCodigo() {
         return codigo;
@@ -28,14 +63,6 @@ public class Raca {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Integer getCod_touro() {
-        return cod_touro;
-    }
-
-    public void setCod_touro(Integer cod_touro) {
-        this.cod_touro = cod_touro;
     }
     
 }

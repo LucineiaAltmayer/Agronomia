@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import DaoTouro;
-import  DaoTouro;
+import DaoTouro;
 /**
  *
  * @author 8
@@ -101,4 +101,8 @@ public class DaoRaca {
         }
         return null;
     }
+ public static void atualizaComboTipo(ManutencaoProduto man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTipoProduto.consultar().toArray());
+        man.jcbTipo.setModel(defaultComboBoxModel);
+}
 }
