@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package tela.manutencao.manejo;
-
+import tela.listagem.manejo.ListagemManejo;
 /**
  *
  * @author 8
  */
 public class ManutencaoManejo extends javax.swing.JDialog {
-
+public ListagemManejo listagem;
     /**
      * Creates new form ManutencaoManejo
      */
@@ -18,7 +18,24 @@ public class ManutencaoManejo extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+ //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
+ public ManutencaoManejo(java.awt.Frame parent, boolean modal, ListagemManejo listagem) {
+        super(parent, modal);
+        initComponents();
+        this.listagem = listagem;
+        
+        jtfCodigoManejo.setEnabled(false);  //desabilitando a edição do campo código
+        btnAlterar.setEnabled(false); //desabilitando o botão alterar
+        btnExcluir.setEnabled(false); //desabilitando o botão excluir
+  }
+ public ManutencaoManejo(java.awt.Frame parent, boolean modal, ListagemManejo listagem, int pk) {
+        super(parent, modal);
+        initComponents();
+        
+        jtfCodigoManejo.setEnabled(false);  //desabilitando a edição do campo código
+        this.listagem = listagem;
+        controlador.manejo.ControladorManejo.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,7 +49,7 @@ public class ManutencaoManejo extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jttfCodigoManejo = new javax.swing.JTextField();
+        jtfCodigoManejo = new javax.swing.JTextField();
         jtfObsManejo = new javax.swing.JTextField();
         jtfDataManejo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -61,8 +78,18 @@ public class ManutencaoManejo extends javax.swing.JDialog {
         });
 
         btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,7 +111,7 @@ public class ManutencaoManejo extends javax.swing.JDialog {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jttfCodigoManejo, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                                    .addComponent(jtfCodigoManejo, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                                     .addComponent(jtfObsManejo)
                                     .addComponent(jtfDataManejo)))
                             .addGroup(layout.createSequentialGroup()
@@ -106,7 +133,7 @@ public class ManutencaoManejo extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jttfCodigoManejo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfCodigoManejo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -130,6 +157,14 @@ public class ManutencaoManejo extends javax.swing.JDialog {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
 controlador.manejo.ControladorManejo.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+controlador.manejo.ControladorManejo.alterar(this);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+controlador.manejo.ControladorManejo.excluir(this);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,8 +217,8 @@ controlador.manejo.ControladorManejo.inserir(this);        // TODO add your hand
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    public javax.swing.JTextField jtfCodigoManejo;
     public javax.swing.JTextField jtfDataManejo;
     public javax.swing.JTextField jtfObsManejo;
-    public javax.swing.JTextField jttfCodigoManejo;
     // End of variables declaration//GEN-END:variables
 }
