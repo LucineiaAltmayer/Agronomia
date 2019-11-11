@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao.lac;
+package dao.pes;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import modelo.lac.Lactacao;
-import java.sql.Date;
+import modelo.pes.Pessoa;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 /**
  *
- * @author Administrador
+ * @author 8
  */
-public class DaoLac {
-     public static boolean inserir(Lactacao objeto) {
-        String sql = "INSERT INTO lactacao (fim, inicio, obs, brinco) VALUES (?, ?, ?, ?)";
+public class DaoPes {
+    public static boolean inserir(Pessoa objeto) {
+        String sql = "INSERT INTO pessoa (email, senha, usuario, nome ) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(objeto.getFim()));
-            ps.setDate(2, Date.valueOf(objeto.getInicio()));
-            ps.setString(3, objeto.getObs());
-            ps.setInt(7, objeto.getTipo().getCodigo());
+            ps.setString(1, objeto.getEmail());
+            ps.setString(2, objeto.getSenha());
+            ps.setString(3, objeto.getUsuario());
+            ps.setString(4, objeto.getNome());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -32,14 +31,14 @@ public class DaoLac {
             return false;
         }
     }
-     public static boolean alterar(Lactacao objeto) {
-        String sql = "UPDATE lactacao SET fim=?, inicio=?, obs=?, brinco=? WHERE codigo=?";
+     public static boolean alterar(Pessoa objeto) {
+        String sql = "UPDATE pessoa SET email=?, senha=?, usuario=?, nome=? WHERE codigo=?";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
-            ps.setDate(1, Date.valueOf(objeto.getFim()));
-            ps.setDate(2, Date.valueOf(objeto.getInicio())); 
-            ps.setString(3, objeto.getObs());
-            ps.setInt(4, objeto.getTipo().getCodigo());
+            ps.setString(4, objeto.getNome()); 
+            ps.setString(1, objeto.getEmail());
+            ps.setString(2, objeto.getSenha());
+            ps.setString(3, objeto.getUsuario());
             ps.setInt(5, objeto.getCodigo());
             ps.executeUpdate();
             return true;
@@ -48,8 +47,8 @@ public class DaoLac {
             return false;
         }
     }
-      public static boolean excluir(Lactacao objeto) {
-        String sql = "DELETE FROM lactacao WHERE codigo=?";
+      public static boolean excluir(Pessoa objeto) {
+        String sql = "DELETE FROM pessoa WHERE codigo=?";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setInt(1, objeto.getCodigo());
@@ -60,22 +59,22 @@ public class DaoLac {
             return false;
         }
     }
-      public static List<Lactacao> consultar() {
-        List<Lactacao> resultados = new ArrayList<>();
+      public static List<Pessoa> consultar() {
+        List<Pessoa> resultados = new ArrayList<>();
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, fim, inicio, obs, brinco FROM produto";
+        String sql = "SELECT codigo,email, senha, usuario, nome FROM pessoa";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Lactacao objeto = new Lactacao();
+                Pessoa objeto = new Pessoa();
                 //definir um set para cada atributo da entidade, cuidado com o tipo
                 objeto.setCodigo(rs.getInt("codigo"));
-                objeto.setObs(rs.getString("obs"));
-                objeto.setFim(rs.getDate("fim").toLocalDate());
-                objeto.setInicio(rs.getDate("inicio").toLocalDate());
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_tipo")));
+                objeto.setEmail(rs.getString("email"));
+                objeto.setSenha(rs.getString("senha"));
+                objeto.setUsuario(rs.getString("usuarip"));
+                 objeto.setNome(rs.getString("nome"));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
             }
@@ -85,22 +84,22 @@ public class DaoLac {
             return null;
         }
 }
-       public static Lactacao consultar(int primaryKey) {
+      public static Pessoa consultar(int primaryKey) {
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, fim, inicio, obs, brinco FROM lactacao WHERE codigo=?";
+        String sql = "SELECT codigo, nome, email, senha, usuario FROM pessoa WHERE codigo=?";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setInt(1, primaryKey);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Lactacao objeto = new Lactacao();
+                Pessoa objeto = new Pessoa();
                 //definir um set para cada atributo da entidade, cuidado com o tipo
                 objeto.setCodigo(rs.getInt("codigo"));
-                objeto.setFim(rs.getDate("fim").toLocalDate());
-                objeto.setInicio(rs.getDate("inicio").toLocalDate());
-                objeto.setObs(rs.getString("obs"));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_tipo"))); 
+                objeto.setNome(rs.getString("nome"));
+                objeto.setEmail(rs.getString("email"));
+                objeto.setSenha(rs.getString("senha"));
+                objeto.setUsuario(rs.getString("usuario"));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {
@@ -108,5 +107,4 @@ public class DaoLac {
         }
         return null;
     }
-
 }

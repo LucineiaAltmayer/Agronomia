@@ -12,7 +12,11 @@ import modelo.lac.Lactacao;
 import tela.manutencao.lac.ManutencaoLac;
 import java.time.LocalDate; 
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Administrador
@@ -29,6 +33,10 @@ public class ControladorLac {
         boolean resultado = DaoLac.inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -46,6 +54,10 @@ public class ControladorLac {
         boolean resultado = DaoLac.alterar(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
@@ -58,9 +70,51 @@ public class ControladorLac {
         boolean resultado = DaoLac.excluir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Excluído com sucesso!");
+            if (man.listagem != null) {
+     atualizarTabela(man.listagem.tabela); //atualizar a tabela da listagem
+}
+man.dispose();//fechar a tela da manutenção
         } else {
             JOptionPane.showMessageDialog(null, "Erro!");
         }
     }
+    public static void atualizarTabela(JTable tabela) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        //definindo o cabeçalho da tabela
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Observações");
+        modelo.addColumn("Fim");
+        modelo.addColumn("Inicio");
+        modelo.addColumn("Brinco");
+        List<Lactacao> resultados = DaoLac.consultar();
+        for (Lactacao objeto : resultados) {
+            Vector linha = new Vector();
+            
+            //definindo o conteúdo da tabela
+            linha.add(objeto.getCodigo());
+            linha.add(objeto.getObs());
+            linha.add(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            linha.add(objeto.getInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            linha.add(objeto.getBrinco());
+            modelo.addRow(linha); //adicionando a linha na tabela
+        }
+        tabela.setModel(modelo);
+    }
     
+    public static void atualizaCampos(ManutencaoLac man, int pk){ 
+        Lactacao objeto = DaoLac.consultar(pk);
+        //Definindo os valores do campo na tela (um para cada atributo/campo)
+        man.jtfCodLac.setText(objeto.getCodigo().toString());
+        man.jtfObsLac.setText(objeto.getObs());
+        man.jtfFimLac.setText(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        man.jtfInicioLac.setText(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        man.jcbTipo.setSelectedItem(objeto.getTipo());
+        
+        man.jtfCodLac.setEnabled(false); //desabilitando o campo código
+        man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
+    }
+    public static void atualizaComboTipo(ManutencaoLac man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTipoProduto.consultar().toArray());
+        man.jcbTipo.setModel(defaultComboBoxModel);
+}
 }
