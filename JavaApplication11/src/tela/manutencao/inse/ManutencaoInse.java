@@ -64,10 +64,12 @@ public ListagemInse listagem;
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 0, 153));
         jLabel1.setText("Manutenção Inseminação");
 
         jLabel2.setText("Código:");
@@ -107,6 +109,8 @@ public ListagemInse listagem;
             }
         });
 
+        jLabel9.setText("Lades of the game.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,7 +137,7 @@ public ListagemInse listagem;
                             .addComponent(jtfCodTouro)
                             .addComponent(jtfBrincoVaca)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 55, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)))
                 .addGap(63, 63, 63))
             .addGroup(layout.createSequentialGroup()
@@ -145,7 +149,9 @@ public ListagemInse listagem;
                 .addComponent(btnAlterar)
                 .addGap(18, 18, 18)
                 .addComponent(btnExcluir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,6 +193,9 @@ public ListagemInse listagem;
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9))
         );
 
         pack();
@@ -259,6 +268,7 @@ controlador.inse.ControladorInse.excluir(this);        // TODO add your handling
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     public javax.swing.JTextField jtfBrincoVaca;
     public javax.swing.JTextField jtfCodTouro;
     public javax.swing.JTextField jtfCodigoInse;

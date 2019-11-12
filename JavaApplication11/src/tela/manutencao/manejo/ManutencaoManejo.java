@@ -56,10 +56,12 @@ public ListagemManejo listagem;
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 153));
         jLabel1.setText("Manutenção Manejo");
 
         jLabel2.setText("Código:");
@@ -91,6 +93,8 @@ public ListagemManejo listagem;
             }
         });
 
+        jLabel5.setText("Lades of the game.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,12 +122,17 @@ public ListagemManejo listagem;
                                 .addGap(31, 31, 31)
                                 .addComponent(btnAdicionar)))))
                 .addContainerGap(101, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAlterar)
-                .addGap(28, 28, 28)
-                .addComponent(btnExcluir)
-                .addGap(53, 53, 53))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnAlterar)
+                        .addGap(28, 28, 28)
+                        .addComponent(btnExcluir)
+                        .addGap(53, 53, 53))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +157,9 @@ public ListagemManejo listagem;
                     .addComponent(btnAdicionar)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -217,6 +228,7 @@ controlador.manejo.ControladorManejo.excluir(this);        // TODO add your hand
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     public javax.swing.JTextField jtfCodigoManejo;
     public javax.swing.JTextField jtfDataManejo;
     public javax.swing.JTextField jtfObsManejo;

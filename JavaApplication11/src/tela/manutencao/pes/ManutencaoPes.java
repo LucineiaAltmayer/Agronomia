@@ -60,10 +60,12 @@ public class ManutencaoPes extends javax.swing.JDialog {
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 0, 153));
         jLabel1.setText("Manutenção Pessoa");
 
         jLabel2.setText("Código:");
@@ -98,6 +100,8 @@ public class ManutencaoPes extends javax.swing.JDialog {
                 btnExcluirActionPerformed(evt);
             }
         });
+
+        jLabel7.setText("Lades of the game.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,6 +145,10 @@ public class ManutencaoPes extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnExcluir)))
                 .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(21, 21, 21))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,7 +183,8 @@ public class ManutencaoPes extends javax.swing.JDialog {
                     .addComponent(btnAdicionar)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir))
-                .addGap(35, 35, 35))
+                .addGap(21, 21, 21)
+                .addComponent(jLabel7))
         );
 
         pack();
@@ -246,6 +255,7 @@ controlador.pes.ControladorPes.excluir(this);        // TODO add your handling c
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     public javax.swing.JTextField jtfCodigoP;
     public javax.swing.JTextField jtfEmail;
     public javax.swing.JTextField jtfNome;
