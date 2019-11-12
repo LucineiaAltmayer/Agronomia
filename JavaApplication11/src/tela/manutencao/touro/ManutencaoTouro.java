@@ -89,6 +89,7 @@ public class ManutencaoTouro extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel4.setText("Lades of the game.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

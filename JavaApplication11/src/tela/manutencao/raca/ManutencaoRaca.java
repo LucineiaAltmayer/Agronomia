@@ -93,6 +93,7 @@ public ListagemRaca listagem;
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel5.setText("Lades of the game.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

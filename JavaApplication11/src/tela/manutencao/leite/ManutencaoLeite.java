@@ -109,6 +109,7 @@ public class ManutencaoLeite extends javax.swing.JDialog {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel9.setText("Lades of the game.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,10 +119,10 @@ public class ManutencaoLeite extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel4)
                                         .addComponent(jLabel2)
@@ -140,7 +141,6 @@ public class ManutencaoLeite extends javax.swing.JDialog {
                                         .addComponent(jtfBrincoV)
                                         .addComponent(jtfCodPes)))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addContainerGap()
                                     .addComponent(jButton1)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnAdicionar)
@@ -148,9 +148,7 @@ public class ManutencaoLeite extends javax.swing.JDialog {
                                     .addComponent(btnAlterar)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnExcluir)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel1)))
+                            .addComponent(jLabel1))
                         .addGap(0, 9, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)

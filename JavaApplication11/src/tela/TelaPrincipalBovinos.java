@@ -54,6 +54,7 @@ public class TelaPrincipalBovinos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnLactacao.setForeground(new java.awt.Color(255, 0, 153));
         btnLactacao.setText("Lactação");
         btnLactacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +83,7 @@ public class TelaPrincipalBovinos extends javax.swing.JFrame {
             }
         });
 
+        btnPes.setForeground(new java.awt.Color(255, 51, 153));
         btnPes.setText("Pessoa");
         btnPes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +120,7 @@ public class TelaPrincipalBovinos extends javax.swing.JFrame {
         jLabel2.setText("Hera!");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(153, 0, 153));
+        jLabel4.setForeground(new java.awt.Color(255, 0, 153));
         jLabel4.setText("Bovinos!!");
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela/eeeeeeeeeeeeeee.png"))); // NOI18N
@@ -154,16 +156,13 @@ public class TelaPrincipalBovinos extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(25, 25, 25))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)
-                                .addGap(27, 27, 27))))))
+                        .addComponent(jLabel7)
+                        .addGap(27, 27, 27))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
@@ -216,7 +215,6 @@ public class TelaPrincipalBovinos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLeite)
                             .addComponent(btnTouro))
