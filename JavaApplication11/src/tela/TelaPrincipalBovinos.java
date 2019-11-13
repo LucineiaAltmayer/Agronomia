@@ -5,14 +5,14 @@
  */
 package tela;
 
-import tela.manutencao.inse.ManutencaoInse;
-import tela.manutencao.lac.ManutencaoLac;
-import tela.manutencao.leite.ManutencaoLeite;
-import tela.manutencao.manejo.ManutencaoManejo;
-import tela.manutencao.pes.ManutencaoPes;
-import tela.manutencao.raca.ManutencaoRaca;
-import tela.manutencao.touro.ManutencaoTouro;
-import tela.manutencao.vaca.ManutencaoVaca;
+import tela.manutencao.ManutencaoInse;
+import tela.manutencao.ManutencaoLac;
+import tela.manutencao.ManutencaoLeite;
+import tela.manutencao.ManutencaoManejo;
+import tela.manutencao.ManutencaoPes;
+import tela.manutencao.ManutencaoRaca;
+import tela.manutencao.ManutencaoTouro;
+import tela.manutencao.ManutencaoVaca;
 
 /**
  *
