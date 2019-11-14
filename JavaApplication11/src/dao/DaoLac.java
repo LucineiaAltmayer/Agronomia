@@ -12,6 +12,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import tela.manutencao.ManutencaoLac;
 /**
  *
  * @author Administrador
@@ -24,7 +26,7 @@ public class DaoLac {
             ps.setDate(1, Date.valueOf(objeto.getFim()));
             ps.setDate(2, Date.valueOf(objeto.getInicio()));
             ps.setString(3, objeto.getObs());
-            ps.setInt(7, objeto.getTipo().getCodigo());
+            ps.setInt(7, objeto.getVaca().getBrinco());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -39,7 +41,7 @@ public class DaoLac {
             ps.setDate(1, Date.valueOf(objeto.getFim()));
             ps.setDate(2, Date.valueOf(objeto.getInicio())); 
             ps.setString(3, objeto.getObs());
-            ps.setInt(4, objeto.getTipo().getCodigo());
+            ps.setInt(4, objeto.getVaca().getBrinco());
             ps.setInt(5, objeto.getCodigo());
             ps.executeUpdate();
             return true;
@@ -75,7 +77,7 @@ public class DaoLac {
                 objeto.setObs(rs.getString("obs"));
                 objeto.setFim(rs.getDate("fim").toLocalDate());
                 objeto.setInicio(rs.getDate("inicio").toLocalDate());
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_tipo")));
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco")));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
             }
@@ -100,7 +102,7 @@ public class DaoLac {
                 objeto.setFim(rs.getDate("fim").toLocalDate());
                 objeto.setInicio(rs.getDate("inicio").toLocalDate());
                 objeto.setObs(rs.getString("obs"));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_tipo"))); 
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco"))); 
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {

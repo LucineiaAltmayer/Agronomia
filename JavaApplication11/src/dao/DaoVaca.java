@@ -12,7 +12,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import DaoRaca;
+import dao.DaoRaca;
 /**
  *
  * @author 8
@@ -26,8 +26,8 @@ public class DaoVaca {
             ps.setString(2, objeto.getObs());
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
-            ps.setInt(5, objeto.getTipo().getCodigo());
-            ps.setInt(6, objeto.getTipo().getCodigo());
+            ps.setInt(5, objeto.getMae().getBrinco());
+            ps.setInt(6, objeto.getRaca().getCodigo());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -43,8 +43,8 @@ public class DaoVaca {
             ps.setString(2, objeto.getObs());
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
-            ps.setInt(5, objeto.getTipo().getCodigo());
-            ps.setInt(6, objeto.getTipo().getCodigo());
+            ps.setInt(5, objeto.getMae().getBrinco());
+            ps.setInt(6, objeto.getRaca().getCodigo());
             ps.setInt(7, objeto.getBrinco());
             ps.executeUpdate();
             return true;
@@ -82,8 +82,8 @@ public class DaoVaca {
                 objeto.setObs(rs.getString("obd"));
                 objeto.setOrigem(rs.getInt("oringem"));
                 objeto.setNascimento(rs.getDate("nascimento").toLocalDate());
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("brinco_mae")));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_raca")));
+                objeto.setMae(DaoVaca.consultar(rs.getInt("brinco_mae")));
+                objeto.setRaca(DaoRaca.consultar(rs.getInt("cod_raca")));
                 
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
@@ -110,8 +110,8 @@ public class DaoVaca {
                 objeto.setObs(rs.getString("obs"));
                 objeto.setOrigem(rs.getInt("origem"));
                 objeto.setNascimento(rs.getDate("nascimento").toLocalDate());
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("brinco_mae")));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_raca")));
+                objeto.setMae(DaoVaca.consultar(rs.getInt("brinco_mae")));
+                objeto.setRaca(DaoRaca.consultar(rs.getInt("cod_raca")));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {

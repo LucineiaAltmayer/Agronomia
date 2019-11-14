@@ -16,9 +16,31 @@ public class Vaca {
     private String obs;
     private Integer  origem;
     private LocalDate nascimento;
-    private Integer brinco_mae;
-    private Integer cod_raca;
+    private Vaca mae;
+    private Raca raca;
 
+    @Override
+    public String toString() {
+        return brinco ;
+    }
+
+    public Vaca getMae() {
+        return mae;
+    }
+
+    public void setMae(Vaca mae) {
+        this.mae = mae;
+    }
+
+    public Raca getRaca() {
+        return raca;
+    }
+
+    public void setRaca(Raca raca) {
+        this.raca = raca;
+    }
+
+    
     public Integer getBrinco() {
         return brinco;
     }
@@ -58,24 +80,6 @@ public class Vaca {
     public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
-
-    public Integer getBrinco_mae() {
-        return brinco_mae;
-    }
-
-    public void setBrinco_mae(Integer brinco_mae) {
-        this.brinco_mae = brinco_mae;
-    }
-
-    public Integer getCod_raca() {
-        return cod_raca;
-    }
-
-    public void setCod_raca(Integer cod_raca) {
-        this.cod_raca = cod_raca;
-    }
-
-    
     
     @Override
     public int hashCode() {

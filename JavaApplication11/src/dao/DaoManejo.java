@@ -60,7 +60,7 @@ public class DaoManejo {
        public static List<Manejo> consultar() {
         List<Manejo> resultados = new ArrayList<>();
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, observacoes, data FROM produto";
+        String sql = "SELECT codigo, observacoes, data FROM manejo";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);

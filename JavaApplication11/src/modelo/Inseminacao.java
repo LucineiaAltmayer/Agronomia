@@ -15,9 +15,32 @@ public class Inseminacao {
     private LocalDate data_inseminacao;
     private Integer situacao;
     private String obs;
-    private Integer cod_touro;
-    private Integer brinco;
+    private Bovinos touro;
+    private Vaca vaca;
 
+    @Override
+    public String toString() {
+        return data_inseminacao;
+    }
+
+    
+    public Bovinos getTouro() {
+        return touro;
+    }
+
+    public void setTouro(Bovinos touro) {
+        this.touro = touro;
+    }
+
+    public Vaca getVaca() {
+        return vaca;
+    }
+
+    public void setVaca(Vaca vaca) {
+        this.vaca = vaca;
+    }
+
+    
     public Integer getCodigo() {
         return codigo;
     }
@@ -57,21 +80,4 @@ public class Inseminacao {
     public void setObs(String obs) {
         this.obs = obs;
     }
-
-    public Integer getCod_touro() {
-        return cod_touro;
-    }
-
-    public void setCod_touro(Integer cod_touro) {
-        this.cod_touro = cod_touro;
-    }
-
-    public Integer getBrinco() {
-        return brinco;
-    }
-
-    public void setBrinco(Integer brinco) {
-        this.brinco = brinco;
-    }
-    
 }

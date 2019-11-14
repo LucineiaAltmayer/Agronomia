@@ -34,6 +34,7 @@ public class ManutencaoLac extends javax.swing.JDialog {
         
         jtfCodLac.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
+        controlador.ControladorLac.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorLac.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
     /**
@@ -55,12 +56,12 @@ public class ManutencaoLac extends javax.swing.JDialog {
         jtfFimLac = new javax.swing.JTextField();
         jtfInicioLac = new javax.swing.JTextField();
         jtfObsLac = new javax.swing.JTextField();
-        jtfBrincoVaca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jcbVaca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -77,12 +78,6 @@ public class ManutencaoLac extends javax.swing.JDialog {
         jLabel5.setText("Observações:");
 
         jLabel6.setText("Brinco da Vaca:");
-
-        jtfBrincoVaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfBrincoVacaActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Cancelar");
 
@@ -110,6 +105,8 @@ public class ManutencaoLac extends javax.swing.JDialog {
         jLabel7.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel7.setText("Lades of the game.");
 
+        jcbVaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +129,7 @@ public class ManutencaoLac extends javax.swing.JDialog {
                                     .addComponent(jtfFimLac)
                                     .addComponent(jtfInicioLac)
                                     .addComponent(jtfObsLac)
-                                    .addComponent(jtfBrincoVaca)))
+                                    .addComponent(jcbVaca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel1)))
@@ -175,7 +172,7 @@ public class ManutencaoLac extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jtfBrincoVaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbVaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -189,10 +186,6 @@ public class ManutencaoLac extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfBrincoVacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfBrincoVacaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfBrincoVacaActionPerformed
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
 controlador.ControladorLac.inserir(this);        // TODO add your handling code here:
@@ -260,7 +253,7 @@ controlador.ControladorLac.excluir(this);        // TODO add your handling code 
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    public javax.swing.JTextField jtfBrincoVaca;
+    public javax.swing.JComboBox<String> jcbVaca;
     public javax.swing.JTextField jtfCodLac;
     public javax.swing.JTextField jtfFimLac;
     public javax.swing.JTextField jtfInicioLac;

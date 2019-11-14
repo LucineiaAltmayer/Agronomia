@@ -14,7 +14,7 @@ public class Lactacao {
     private LocalDate fim;
     private LocalDate inicio;
     private String obs;
-    private Integer brinco;
+    private Vaca vaca;
 
     public Integer getCodigo() {
         return codigo;
@@ -48,12 +48,17 @@ public class Lactacao {
         this.obs = obs;
     }
 
-    public Integer getBrinco() {
-        return brinco;
+    public Vaca getVaca() {
+        return vaca;
     }
 
-    public void setBrinco(Integer brinco) {
-        this.brinco = brinco;
+    public void setVaca(Vaca vaca) {
+        this.vaca = vaca;
     }
-    
+
+    @Override
+    public String toString() {
+        return inicio;
+    }
+
 }

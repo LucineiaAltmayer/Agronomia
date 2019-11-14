@@ -12,8 +12,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import DaoPes;
-import DaoVaca;
+import dao.DaoPes;
+import dao.DaoVaca;
 /**
  *
  * @author 8
@@ -27,8 +27,8 @@ public class DaoLeite {
             ps.setDouble(2, objeto.getTotal());
             ps.setDate(3, Date.valueOf(objeto.getData()));
             ps.setString(4, objeto.getObs());
-            ps.setInt(5, objeto.getTipo().getCodigo());
-            ps.setInt(6, objeto.getTipo().getCodigo());
+            ps.setInt(5, objeto.getVaca().getBrinco());
+            ps.setInt(6, objeto.getPessoa().getCodigo());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -44,8 +44,8 @@ public class DaoLeite {
             ps.setDouble(2, objeto.getTotal());
             ps.setDate(3, Date.valueOf(objeto.getData()));
             ps.setString(4, objeto.getObs());
-            ps.setInt(5, objeto.getTipo().getCodigo());
-            ps.setInt(6, objeto.getTipo().getCodigo());
+            ps.setInt(5, objeto.getVaca().getBrinco());
+            ps.setInt(6, objeto.getPessoa().getCodigo());
             ps.setInt(7, objeto.getCodigo());
             ps.executeUpdate();
             return true;
@@ -82,8 +82,8 @@ public class DaoLeite {
                 objeto.setTotal(rs.getDouble("total"));
                 objeto.setData(rs.getDate("data").toLocalDate());
                 objeto.setObs(rs.getString("obs"));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("brinco")));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_pessoa")));
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco")));
+                objeto.setPessoa(DaoPes.consultar(rs.getInt("cod_pessoa")));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
             }
@@ -109,8 +109,8 @@ public class DaoLeite {
                 objeto.setTotal(rs.getDouble("total"));
                 objeto.setData(rs.getDate("data").toLocalDate());
                 objeto.setObs(rs.getString("obs"));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("brinco")));
-                objeto.setTipo(DaoTipoProduto.consultar(rs.getInt("cod_pessoa")));
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco")));
+                objeto.setPessoa(DaoPes.consultar(rs.getInt("cod_pessoa")));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }
         } catch (SQLException | ClassNotFoundException ex) {

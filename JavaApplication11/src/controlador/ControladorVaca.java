@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import dao.DaoTouro;
 import tela.manutencao.ManutencaoVaca;
 import dao.DaoVaca;
 import javax.swing.JOptionPane;
@@ -15,8 +16,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Raca;
 
 /**
  *
@@ -29,8 +32,8 @@ public class ControladorVaca {
         objeto.setObs(man.jtfObsVaca.getText());
         objeto.setOrigem(Integer.parseInt(man.jtfOrigem.getText()));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setMae((Vaca)man.jcbMae.getSelectedItem());
+        objeto.setRaca((Raca)man.jcbRaca.getSelectedItem());
         
         boolean resultado = DaoVaca.inserir(objeto);
         if (resultado) {
@@ -52,8 +55,8 @@ man.dispose();//fechar a tela da manutenção
         objeto.setOrigem(Integer.parseInt(man.jtfOrigem.getText()));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
         objeto.setNascimento(LocalDate.parse(man.jtfNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setMae((Vaca)man.jcbMae.getSelectedItem());
+        objeto.setRaca((Raca)man.jcbRaca.getSelectedItem());
         boolean resultado = DaoVaca.alterar(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
@@ -100,8 +103,8 @@ man.dispose();//fechar a tela da manutenção
             linha.add(objeto.getObs());
             linha.add(objeto.getSituacao());
             linha.add(objeto.getOrigem());
-            linha.add(objeto.getTipo());
-            linha.add(objeto.getTipo());
+            linha.add(objeto.getMae());
+            linha.add(objeto.getRaca());
             linha.add(objeto.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             modelo.addRow(linha); //adicionando a linha na tabela
         }
@@ -115,14 +118,19 @@ man.dispose();//fechar a tela da manutenção
         man.jtfSituacao.setText(objeto.getSituacao().toString());
         man.jtfOrigem.setText(objeto.getOrigem().toString());
         man.jtfNascimento.setText(objeto.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        man.jcbTipo.setSelectedItem(objeto.getTipo());
-        man.jcbTipo.setSelectedItem(objeto.getTipo());
+        man.jcbMae.setSelectedItem(objeto.getMae());
+        man.jcbRaca.setSelectedItem(objeto.getRaca());
         
         man.jtfBrinco.setEnabled(false); //desabilitando o campo código
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
-   public static void atualizaComboTipo(ManutencaoVaca man) {
-        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTipoProduto.consultar().toArray());
-        man.jcbTipo.setModel(defaultComboBoxModel);
+   public static void atualizaComboRaca(ManutencaoVaca man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTouro.consultar().toArray());
+        man.jcbRaca.setModel(defaultComboBoxModel);
+}
+   
+   public static void atualizaComboMae(ManutencaoVaca man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoVaca.consultar().toArray());
+        man.jcbRaca.setModel(defaultComboBoxModel);
 }
 }

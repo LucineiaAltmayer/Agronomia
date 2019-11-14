@@ -7,6 +7,7 @@ package controlador;
 
 import tela.manutencao.ManutencaoLac;
 import dao.DaoLac;
+import dao.DaoVaca;
 import javax.swing.JOptionPane;
 import modelo.Lactacao;
 import tela.manutencao.ManutencaoLac;
@@ -15,8 +16,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Vaca;
 /**
  *
  * @author Administrador
@@ -28,7 +31,7 @@ public class ControladorLac {
         objeto.setObs(man.jtfObsLac.getText());
         objeto.setFim(LocalDate.parse(man.jtfFimLac.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setInicio(LocalDate.parse(man.jtfInicioLac.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setVaca((Vaca)man.jcbVaca.getSelectedItem());
         
         boolean resultado = DaoLac.inserir(objeto);
         if (resultado) {
@@ -49,7 +52,7 @@ man.dispose();//fechar a tela da manutenção
         objeto.setObs(man.jtfObsLac.getText());
         objeto.setFim(LocalDate.parse(man.jtfFimLac.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setInicio(LocalDate.parse(man.jtfInicioLac.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setVaca((Vaca)man.jcbVaca.getSelectedItem());
         
         boolean resultado = DaoLac.alterar(objeto);
         if (resultado) {
@@ -95,7 +98,7 @@ man.dispose();//fechar a tela da manutenção
             linha.add(objeto.getObs());
             linha.add(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             linha.add(objeto.getInicio().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            linha.add(objeto.getBrinco());
+            linha.add(objeto.getVaca());
             modelo.addRow(linha); //adicionando a linha na tabela
         }
         tabela.setModel(modelo);
@@ -108,13 +111,13 @@ man.dispose();//fechar a tela da manutenção
         man.jtfObsLac.setText(objeto.getObs());
         man.jtfFimLac.setText(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         man.jtfInicioLac.setText(objeto.getFim().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        man.jcbTipo.setSelectedItem(objeto.getTipo());
+        man.jcbVaca.setSelectedItem(objeto.getVaca());
         
         man.jtfCodLac.setEnabled(false); //desabilitando o campo código
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
-    public static void atualizaComboTipo(ManutencaoLac man) {
-        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTipoProduto.consultar().toArray());
-        man.jcbTipo.setModel(defaultComboBoxModel);
+    public static void atualizaComboVaca(ManutencaoLac man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoVaca.consultar().toArray());
+        man.jcbVaca.setModel(defaultComboBoxModel);
 }
 }

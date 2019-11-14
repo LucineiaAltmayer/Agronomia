@@ -12,8 +12,8 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import DaoTouro;
-import DaoVaca;
+import dao.DaoTouro;
+import dao.DaoVaca;
 /**
  *
  * @author 8
@@ -27,8 +27,8 @@ public class DaoInse {
             ps.setDate(2, Date.valueOf(objeto.getData_inseminacao()));
             ps.setInt(3, objeto.getSituacao());
             ps.setString(4, objeto.getObs());
-            ps.setInt(5, objeto.getCod_touro().getCodigo());
-            ps.setInt(6, objeto.getBrinco().getCodigo());
+            ps.setInt(5, objeto.getTouro().getCodigo());
+            ps.setInt(6, objeto.getVaca().getBrinco());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -44,8 +44,8 @@ public class DaoInse {
             ps.setDate(2, Date.valueOf(objeto.getData_inseminacao()));
             ps.setInt(3, objeto.getSituacao());
             ps.setString(4, objeto.getObs()); 
-            ps.setInt(5, objeto.getCod_touro().getCodigo());
-            ps.setInt(6, objeto.getBrinco().getCodigo());
+            ps.setInt(5, objeto.getTouro().getCodigo());
+            ps.setInt(6, objeto.getVaca().getBrinco());
             ps.setInt(7, objeto.getCodigo());
             ps.executeUpdate();
             return true;
@@ -82,8 +82,8 @@ public class DaoInse {
                 objeto.setData_inseminacao(rs.getDate("data_inseminacao").toLocalDate());
                 objeto.setSituacao(rs.getInt("situacao"));
                 objeto.setObs(rs.getString("obs"));
-                objeto.setCod_touro(DaoTouro.consultar(rs.getInt("cod_touro")));
-                objeto.setBrinco(DaoVaca.consultar(rs.getInt("brinco")));
+                objeto.setTouro(DaoTouro.consultar(rs.getInt("cod_touro")));
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco")));
                 
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
@@ -110,8 +110,8 @@ public class DaoInse {
                 objeto.setData_inseminacao(rs.getDate("data_inseminacao").toLocalDate());
                 objeto.setSituacao(rs.getInt("situacao"));
                 objeto.setObs(rs.getString("obs"));
-                objeto.setCod_touro(DaoTouro.consultar(rs.getInt("cod_touro")));
-                objeto.setBrinco(DaoVaca.consultar(rs.getInt("brinco")));
+                objeto.setTouro(DaoTouro.consultar(rs.getInt("cod_touro")));
+                objeto.setVaca(DaoVaca.consultar(rs.getInt("brinco")));
                 
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
             }

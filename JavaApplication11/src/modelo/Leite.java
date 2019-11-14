@@ -15,8 +15,8 @@ public class Leite {
 	private  Double total;
 	private LocalDate  data; 
 	private String obs;
-	private Integer brinco;
-	private Integer cod_pessoa;
+	private Vaca vaca;
+	private Pessoa pessoa;
 
     public Integer getCodigo() {
         return codigo;
@@ -58,20 +58,21 @@ public class Leite {
         this.obs = obs;
     }
 
-    public Integer getBrinco() {
-        return brinco;
+    public Vaca getVaca() {
+        return vaca;
     }
 
-    public void setBrinco(Integer brinco) {
-        this.brinco = brinco;
+    public void setVaca(Vaca vaca) {
+        this.vaca = vaca;
     }
 
-    public Integer getCod_pessoa() {
-        return cod_pessoa;
+    
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setCod_pessoa(Integer cod_pessoa) {
-        this.cod_pessoa = cod_pessoa;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
-        
+ 
 }

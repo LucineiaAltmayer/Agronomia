@@ -46,8 +46,8 @@
                       <Component id="jtfObsVaca" alignment="0" max="32767" attributes="0"/>
                       <Component id="jtfOrigem" alignment="0" max="32767" attributes="0"/>
                       <Component id="jtfNascimento" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jcfBrincoMae" max="32767" attributes="0"/>
-                      <Component id="jcfCodRaca" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jcbMae" max="32767" attributes="0"/>
+                      <Component id="jcbRaca" alignment="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -100,12 +100,12 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcfBrincoMae" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbMae" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jcfCodRaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jcbRaca" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -159,7 +159,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Brinco da M&#xe2;e"/>
+        <Property name="text" type="java.lang.String" value="Brinco da M&#xe3;e:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
@@ -188,16 +188,6 @@
       </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="jtfNascimento">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jcfBrincoMae">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jcfCodRaca">
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
@@ -247,6 +237,38 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Lades of the game."/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbMae">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jcbRaca">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

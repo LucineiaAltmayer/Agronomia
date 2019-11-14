@@ -34,6 +34,8 @@ public ListagemInse listagem;
         
         jtfCodigoInse.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
+        controlador.ControladorInse.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorInse.atualizaComboBovinos(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorInse.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
     /**
@@ -58,13 +60,13 @@ public ListagemInse listagem;
         jtfDataInse = new javax.swing.JTextField();
         jtfSituacao = new javax.swing.JTextField();
         jtfObsInse = new javax.swing.JTextField();
-        jtfCodTouro = new javax.swing.JTextField();
-        jtfBrincoVaca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jcbTouro = new javax.swing.JComboBox<>();
+        jcbVaca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -112,6 +114,10 @@ public ListagemInse listagem;
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel9.setText("Lades of the game.");
 
+        jcbTouro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jcbVaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,14 +134,19 @@ public ListagemInse listagem;
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfCodigoInse)
-                    .addComponent(jtfDataParto)
-                    .addComponent(jtfDataInse)
-                    .addComponent(jtfSituacao)
-                    .addComponent(jtfObsInse)
-                    .addComponent(jtfCodTouro)
-                    .addComponent(jtfBrincoVaca))
-                .addGap(63, 63, 63))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfCodigoInse)
+                            .addComponent(jtfDataParto)
+                            .addComponent(jtfDataInse)
+                            .addComponent(jtfSituacao)
+                            .addComponent(jtfObsInse))
+                        .addGap(63, 63, 63))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jcbTouro, javax.swing.GroupLayout.Alignment.LEADING, 0, 210, Short.MAX_VALUE)
+                            .addComponent(jcbVaca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jButton1)
@@ -182,11 +193,11 @@ public ListagemInse listagem;
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jtfCodTouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jcbTouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jtfBrincoVaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbVaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -268,8 +279,8 @@ controlador.ControladorInse.excluir(this);        // TODO add your handling code
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField jtfBrincoVaca;
-    public javax.swing.JTextField jtfCodTouro;
+    public javax.swing.JComboBox<String> jcbTouro;
+    public javax.swing.JComboBox<String> jcbVaca;
     public javax.swing.JTextField jtfCodigoInse;
     public javax.swing.JTextField jtfDataInse;
     public javax.swing.JTextField jtfDataParto;

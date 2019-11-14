@@ -7,6 +7,7 @@ package controlador;
 
 import tela.manutencao.ManutencaoInse;
 import dao.DaoInse;
+import dao.DaoVaca;
 import javax.swing.JOptionPane;
 import modelo.Inseminacao;
 import tela.manutencao.ManutencaoInse;
@@ -17,8 +18,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Bovinos;
+import modelo.Vaca;
 /**
  *
  * @author 8
@@ -31,8 +35,8 @@ public class ControladorInse {
         objeto.setData_inseminacao(LocalDate.parse(man.jtfDataInse.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setData_parto(LocalDate.parse(man.jtfDataParto.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setTouro((Bovinos)man.jcbTouro.getSelectedItem());
+        objeto.setVaca((Vaca)man.jcbVaca.getSelectedItem());
         boolean resultado = DaoInse.inserir(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Inserido com sucesso!");
@@ -53,8 +57,8 @@ man.dispose();//fechar a tela da manutenção
         objeto.setData_inseminacao(LocalDate.parse(man.jtfDataInse.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setData_parto(LocalDate.parse(man.jtfDataParto.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
-        objeto.setTipo((TipoProduto)man.jcbTipo.getSelectedItem());
+        objeto.setTouro((Bovinos)man.jcbTouro.getSelectedItem());
+        objeto.setVaca((Vaca)man.jcbVaca.getSelectedItem());
         boolean resultado = DaoInse.alterar(objeto);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
@@ -102,8 +106,8 @@ man.dispose();//fechar a tela da manutenção
             linha.add(objeto.getSituacao());
             linha.add(objeto.getData_inseminacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             linha.add(objeto.getData_parto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-            linha.add(objeto.getCod_touro());
-            linha.add(objeto.getBrinco());
+            linha.add(objeto.getTouro());
+            linha.add(objeto.getVaca());
             modelo.addRow(linha); //adicionando a linha na tabela
         }
         tabela.setModel(modelo);
@@ -116,10 +120,18 @@ man.dispose();//fechar a tela da manutenção
         man.jtfSituacao.setText(objeto.getSituacao().toString());
         man.jtfDataInse.setText(objeto.getData_inseminacao().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         man.jtfDataParto.setText(objeto.getData_parto().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        man.jcbTipo.setSelectedItem(objeto.getBrinco());
-        man.jcbTipo.setSelectedItem(objeto.getCod_touro());
+        man.jcbTouro.setSelectedItem(objeto.getTouro());
+        man.jcbVaca.setSelectedItem(objeto.getVaca());
         
         man.jtfCodigoInse.setEnabled(false); //desabilitando o campo código
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
+    public static void atualizaComboBovinos(ManutencaoInse man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoInse.consultar().toArray());
+        man.jcbTouro.setModel(defaultComboBoxModel);
+}
+    public static void atualizaComboVaca(ManutencaoInse man) {
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoVaca.consultar().toArray());
+        man.jcbVaca.setModel(defaultComboBoxModel);
+}
 }

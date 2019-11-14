@@ -34,6 +34,8 @@ public class ManutencaoVaca extends javax.swing.JDialog {
         
         jtfBrinco.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
+        controlador.ControladorVaca.atualizaComboRaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorVaca.atualizaComboMae(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorVaca.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
     /**
@@ -58,13 +60,13 @@ public class ManutencaoVaca extends javax.swing.JDialog {
         jtfObsVaca = new javax.swing.JTextField();
         jtfOrigem = new javax.swing.JTextField();
         jtfNascimento = new javax.swing.JTextField();
-        jcfBrincoMae = new javax.swing.JTextField();
-        jcfCodRaca = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jcbMae = new javax.swing.JComboBox<>();
+        jcbRaca = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,7 +84,7 @@ public class ManutencaoVaca extends javax.swing.JDialog {
 
         jLabel6.setText("Nascimento:");
 
-        jLabel7.setText("Brinco da Mâe");
+        jLabel7.setText("Brinco da Mãe:");
 
         jLabel8.setText("Código da Raça:");
 
@@ -112,6 +114,10 @@ public class ManutencaoVaca extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel9.setText("Lades of the game.");
 
+        jcbMae.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jcbRaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,8 +143,8 @@ public class ManutencaoVaca extends javax.swing.JDialog {
                         .addComponent(jtfObsVaca)
                         .addComponent(jtfOrigem)
                         .addComponent(jtfNascimento)
-                        .addComponent(jcfBrincoMae)
-                        .addComponent(jcfCodRaca))))
+                        .addComponent(jcbMae, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcbRaca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
@@ -179,11 +185,11 @@ public class ManutencaoVaca extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jcfBrincoMae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbMae, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jcfCodRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbRaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -265,8 +271,8 @@ controlador.ControladorVaca.excluir(this);        // TODO add your handling code
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField jcfBrincoMae;
-    public javax.swing.JTextField jcfCodRaca;
+    public javax.swing.JComboBox<String> jcbMae;
+    public javax.swing.JComboBox<String> jcbRaca;
     public javax.swing.JTextField jtfBrinco;
     public javax.swing.JTextField jtfNascimento;
     public javax.swing.JTextField jtfObsVaca;

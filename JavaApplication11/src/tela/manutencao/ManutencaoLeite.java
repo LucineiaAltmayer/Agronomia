@@ -34,6 +34,8 @@ public class ManutencaoLeite extends javax.swing.JDialog {
         
         jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
+        controlador.ControladorLeite.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorLeite.atualizaComboPes(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorLeite.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
     /**
@@ -58,13 +60,13 @@ public class ManutencaoLeite extends javax.swing.JDialog {
         jtfTotal = new javax.swing.JTextField();
         jtfData = new javax.swing.JTextField();
         jtfObsLeite = new javax.swing.JTextField();
-        jtfBrincoV = new javax.swing.JTextField();
-        jtfCodPes = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnAdicionar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
+        jcbVaca = new javax.swing.JComboBox<>();
+        jcbPes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -112,6 +114,10 @@ public class ManutencaoLeite extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         jLabel9.setText("Lades of the game.");
 
+        jcbVaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jcbPes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,8 +144,8 @@ public class ManutencaoLeite extends javax.swing.JDialog {
                                         .addComponent(jtfTotal)
                                         .addComponent(jtfData)
                                         .addComponent(jtfObsLeite)
-                                        .addComponent(jtfBrincoV)
-                                        .addComponent(jtfCodPes)))
+                                        .addComponent(jcbVaca, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jcbPes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jButton1)
                                     .addGap(18, 18, 18)
@@ -183,11 +189,11 @@ public class ManutencaoLeite extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jtfBrincoV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbVaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jtfCodPes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbPes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -269,8 +275,8 @@ controlador.ControladorLeite.excluir(this);        // TODO add your handling cod
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField jtfBrincoV;
-    public javax.swing.JTextField jtfCodPes;
+    public javax.swing.JComboBox<String> jcbPes;
+    public javax.swing.JComboBox<String> jcbVaca;
     public javax.swing.JTextField jtfCodigo;
     public javax.swing.JTextField jtfData;
     public javax.swing.JTextField jtfObsLeite;

@@ -16,6 +16,11 @@ public class Pessoa {
     private String usuario;
     private String nome ;
 
+    @Override
+    public String toString() {
+        return nome;
+    }
+
     public Integer getCodigo() {
         return codigo;
     }

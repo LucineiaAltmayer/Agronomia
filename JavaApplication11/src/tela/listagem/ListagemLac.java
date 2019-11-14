@@ -170,6 +170,6 @@ if (evt.getClickCount() == 2) {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabela;
+    public javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }
