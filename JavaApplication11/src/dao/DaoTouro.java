@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.ResultSet;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -22,7 +23,11 @@ public class DaoTouro {
         String sql = "INSERT INTO touro (cod_raca, nome) VALUES (?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
-            ps.setInt(1, objeto.getRaca().getCodigo());
+                        if (objeto.getRaca() == null){
+                ps.setNull(1, Types.INTEGER);
+            }else{
+                ps.setInt(1, objeto.getRaca().getCodigo());    
+            }
             ps.setString(2, objeto.getNome());
             ps.executeUpdate();
             return true;
@@ -36,7 +41,11 @@ public class DaoTouro {
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getNome()); 
-            ps.setInt(2, objeto.getRaca().getCodigo());
+                        if (objeto.getRaca() == null){
+                ps.setNull(5, Types.INTEGER);
+            }else{
+                ps.setInt(5, objeto.getRaca().getCodigo());    
+            }
             ps.setInt(3, objeto.getCodigo());
             ps.executeUpdate();
             return true;

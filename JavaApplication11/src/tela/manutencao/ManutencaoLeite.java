@@ -4,40 +4,51 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
+
 import tela.listagem.ListagemLeite;
+
 /**
  *
  * @author 8
  */
 public class ManutencaoLeite extends javax.swing.JDialog {
- public ListagemLeite listagem;
+
+    public ListagemLeite listagem;
+
     /**
      * Creates new form ManutencaoLeite
      */
     public ManutencaoLeite(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador.ControladorLeite.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorLeite.atualizaComboPes(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
     }
 //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
- public ManutencaoLeite(java.awt.Frame parent, boolean modal, ListagemLeite listagem) {
+
+    public ManutencaoLeite(java.awt.Frame parent, boolean modal, ListagemLeite listagem) {
         super(parent, modal);
         initComponents();
         this.listagem = listagem;
-        
+
         jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
         btnAlterar.setEnabled(false); //desabilitando o botão alterar
         btnExcluir.setEnabled(false); //desabilitando o botão excluir
-  }
- public ManutencaoLeite(java.awt.Frame parent, boolean modal, ListagemLeite listagem, int pk) {
+        controlador.ControladorLeite.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorLeite.atualizaComboPes(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+    }
+
+    public ManutencaoLeite(java.awt.Frame parent, boolean modal, ListagemLeite listagem, int pk) {
         super(parent, modal);
         initComponents();
-        
+
         jtfCodigo.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
         controlador.ControladorLeite.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorLeite.atualizaComboPes(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorLeite.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -208,15 +219,15 @@ public class ManutencaoLeite extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-controlador.ControladorLeite.inserir(this);        // TODO add your handling code here:
+        controlador.ControladorLeite.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-controlador.ControladorLeite.alterar(this);        // TODO add your handling code here:
+        controlador.ControladorLeite.alterar(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-controlador.ControladorLeite.excluir(this);        // TODO add your handling code here:
+        controlador.ControladorLeite.excluir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**

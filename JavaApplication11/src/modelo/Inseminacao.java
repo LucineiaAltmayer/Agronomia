@@ -20,7 +20,7 @@ public class Inseminacao {
 
     @Override
     public String toString() {
-        return data_inseminacao;
+        return data_inseminacao.toString();
     }
 
     

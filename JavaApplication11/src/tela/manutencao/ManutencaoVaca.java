@@ -4,40 +4,51 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
+
 import tela.listagem.ListagemVaca;
+
 /**
  *
  * @author 8
  */
 public class ManutencaoVaca extends javax.swing.JDialog {
- public ListagemVaca listagem;
+
+    public ListagemVaca listagem;
+
     /**
      * Creates new form ManutencaoVaca
      */
     public ManutencaoVaca(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador.ControladorVaca.atualizaComboRaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorVaca.atualizaComboMae(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
     }
 //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
- public ManutencaoVaca(java.awt.Frame parent, boolean modal, ListagemVaca listagem) {
+
+    public ManutencaoVaca(java.awt.Frame parent, boolean modal, ListagemVaca listagem) {
         super(parent, modal);
         initComponents();
         this.listagem = listagem;
-        
+
         jtfBrinco.setEnabled(false);  //desabilitando a edição do campo código
         btnAlterar.setEnabled(false); //desabilitando o botão alterar
         btnExcluir.setEnabled(false); //desabilitando o botão excluir
-  }
-  public ManutencaoVaca(java.awt.Frame parent, boolean modal, ListagemVaca listagem, int pk) {
+        controlador.ControladorVaca.atualizaComboRaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorVaca.atualizaComboMae(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+    }
+
+    public ManutencaoVaca(java.awt.Frame parent, boolean modal, ListagemVaca listagem, int pk) {
         super(parent, modal);
         initComponents();
-        
+
         jtfBrinco.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
         controlador.ControladorVaca.atualizaComboRaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorVaca.atualizaComboMae(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorVaca.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -204,15 +215,15 @@ public class ManutencaoVaca extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-controlador.ControladorVaca.inserir(this);        // TODO add your handling code here:
+        controlador.ControladorVaca.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-controlador.ControladorVaca.alterar(this);        // TODO add your handling code here:
+        controlador.ControladorVaca.alterar(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-controlador.ControladorVaca.excluir(this);        // TODO add your handling code here:
+        controlador.ControladorVaca.excluir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**

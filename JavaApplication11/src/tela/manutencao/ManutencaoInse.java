@@ -17,6 +17,8 @@ public ListagemInse listagem;
     public ManutencaoInse(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador.ControladorInse.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorInse.atualizaComboBovinos(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
     }
 //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
  public ManutencaoInse(java.awt.Frame parent, boolean modal, ListagemInse listagem) {
@@ -27,6 +29,8 @@ public ListagemInse listagem;
         jtfCodigoInse.setEnabled(false);  //desabilitando a edição do campo código
         btnAlterar.setEnabled(false); //desabilitando o botão alterar
         btnExcluir.setEnabled(false); //desabilitando o botão excluir
+        controlador.ControladorInse.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+        controlador.ControladorInse.atualizaComboBovinos(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
   }
   public ManutencaoInse(java.awt.Frame parent, boolean modal, ListagemInse listagem, int pk) {
         super(parent, modal);

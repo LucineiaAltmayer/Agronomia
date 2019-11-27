@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import dao.DaoTouro;
 import dao.DaoVaca;
+import java.sql.Types;
 /**
  *
  * @author 8
@@ -26,8 +27,12 @@ public class DaoInse {
             ps.setDate(1, Date.valueOf(objeto.getData_parto()));
             ps.setDate(2, Date.valueOf(objeto.getData_inseminacao()));
             ps.setInt(3, objeto.getSituacao());
-            ps.setString(4, objeto.getObs());
-            ps.setInt(5, objeto.getTouro().getCodigo());
+            ps.setInt(4, objeto.getTouro().getCodigo());
+                        if (objeto.getTouro() == null){
+                ps.setNull(4, Types.INTEGER);
+            }else{
+                ps.setInt(5, objeto.getTouro().getCodigo());    
+            }
             ps.setInt(6, objeto.getVaca().getBrinco());
             ps.executeUpdate();
             return true;
@@ -42,9 +47,13 @@ public class DaoInse {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setDate(1, Date.valueOf(objeto.getData_parto()));
             ps.setDate(2, Date.valueOf(objeto.getData_inseminacao()));
-            ps.setInt(3, objeto.getSituacao());
-            ps.setString(4, objeto.getObs()); 
-            ps.setInt(5, objeto.getTouro().getCodigo());
+            ps.setInt(3, objeto.getSituacao()); 
+            ps.setInt(4, objeto.getTouro().getCodigo());
+                        if (objeto.getTouro() == null){
+                ps.setNull(4, Types.INTEGER);
+            }else{
+                ps.setInt(5, objeto.getTouro().getCodigo());    
+            }
             ps.setInt(6, objeto.getVaca().getBrinco());
             ps.setInt(7, objeto.getCodigo());
             ps.executeUpdate();

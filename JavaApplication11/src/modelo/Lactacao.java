@@ -58,7 +58,7 @@ public class Lactacao {
 
     @Override
     public String toString() {
-        return inicio;
+        return inicio.toString();
     }
 
 }

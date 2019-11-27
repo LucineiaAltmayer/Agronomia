@@ -4,39 +4,48 @@
  * and open the template in the editor.
  */
 package tela.manutencao;
+
 import tela.listagem.ListagemLac;
+
 /**
  *
  * @author Administrador
  */
 public class ManutencaoLac extends javax.swing.JDialog {
- public ListagemLac listagem;
+
+    public ListagemLac listagem;
+
     /**
      * Creates new form ManutencaoLac
      */
     public ManutencaoLac(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador.ControladorLac.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
     }
- //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
- public ManutencaoLac(java.awt.Frame parent, boolean modal, ListagemLac listagem) {
+    //Entrando na Manutenção de Produto para Adicionar um novo Produto (OBS: o nome do método deverá ser o mesmo nome da classe)
+
+    public ManutencaoLac(java.awt.Frame parent, boolean modal, ListagemLac listagem) {
         super(parent, modal);
         initComponents();
         this.listagem = listagem;
-        
+
         jtfCodLac.setEnabled(false);  //desabilitando a edição do campo código
         btnAlterar.setEnabled(false); //desabilitando o botão alterar
         btnExcluir.setEnabled(false); //desabilitando o botão excluir
-  }
- public ManutencaoLac(java.awt.Frame parent, boolean modal, ListagemLac listagem, int pk) {
+        controlador.ControladorLac.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
+    }
+
+    public ManutencaoLac(java.awt.Frame parent, boolean modal, ListagemLac listagem, int pk) {
         super(parent, modal);
         initComponents();
-        
+
         jtfCodLac.setEnabled(false);  //desabilitando a edição do campo código
         this.listagem = listagem;
         controlador.ControladorLac.atualizaComboVaca(this); //no construtor com 3 parâmetros adicionar antes do atualizarCampos
         controlador.ControladorLac.atualizaCampos(this, pk);//pegando os valores do BD e colocando na tela
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -188,15 +197,15 @@ public class ManutencaoLac extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-controlador.ControladorLac.inserir(this);        // TODO add your handling code here:
+        controlador.ControladorLac.inserir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-controlador.ControladorLac.alterar(this);        // TODO add your handling code here:
+        controlador.ControladorLac.alterar(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-controlador.ControladorLac.excluir(this);        // TODO add your handling code here:
+        controlador.ControladorLac.excluir(this);        // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
