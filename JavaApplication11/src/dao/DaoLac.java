@@ -65,7 +65,7 @@ public class DaoLac {
       public static List<Lactacao> consultar() {
         List<Lactacao> resultados = new ArrayList<>();
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, fim, inicio, obs, brinco FROM produto";
+        String sql = "SELECT codigo, fim, inicio, obs, brinco FROM lactacao";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);

@@ -73,7 +73,7 @@ public class DaoPes {
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setEmail(rs.getString("email"));
                 objeto.setSenha(rs.getString("senha"));
-                objeto.setUsuario(rs.getString("usuarip"));
+                objeto.setUsuario(rs.getString("usuario"));
                  objeto.setNome(rs.getString("nome"));
                 
                 resultados.add(objeto);//não mexa nesse, ele adiciona o objeto na lista
