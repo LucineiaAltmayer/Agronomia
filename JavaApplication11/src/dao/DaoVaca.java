@@ -31,12 +31,12 @@ public class DaoVaca {
                 ps.setNull(5, Types.INTEGER);
             }else{
                 ps.setInt(5, objeto.getMae().getBrinco());    
-            }
+            };
                         if (objeto.getRaca() == null){
                 ps.setNull(5, Types.INTEGER);
             }else{
                 ps.setInt(5, objeto.getRaca().getCodigo());    
-            }
+            };
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {
@@ -52,8 +52,16 @@ public class DaoVaca {
             ps.setString(2, objeto.getObs());
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
-            ps.setInt(5, objeto.getMae().getBrinco());
-            ps.setInt(6, objeto.getRaca().getCodigo());
+              if (objeto.getBrinco() == null){
+                ps.setNull(5, Types.INTEGER);
+            }else{
+                ps.setInt(5, objeto.getMae().getBrinco());    
+            };
+                        if (objeto.getRaca() == null){
+                ps.setNull(5, Types.INTEGER);
+            }else{
+                ps.setInt(5, objeto.getRaca().getCodigo());    
+            };
             ps.setInt(7, objeto.getBrinco());
             ps.executeUpdate();
             return true;

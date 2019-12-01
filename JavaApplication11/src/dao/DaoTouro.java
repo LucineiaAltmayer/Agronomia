@@ -27,7 +27,7 @@ public class DaoTouro {
                 ps.setNull(1, Types.INTEGER);
             }else{
                 ps.setInt(1, objeto.getRaca().getCodigo());    
-            }
+            };
             ps.setString(2, objeto.getNome());
             ps.executeUpdate();
             return true;
@@ -42,10 +42,10 @@ public class DaoTouro {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getNome()); 
                         if (objeto.getRaca() == null){
-                ps.setNull(5, Types.INTEGER);
+                ps.setNull(2, Types.INTEGER);
             }else{
-                ps.setInt(5, objeto.getRaca().getCodigo());    
-            }
+                ps.setInt(2, objeto.getRaca().getCodigo());    
+            };
             ps.setInt(3, objeto.getCodigo());
             ps.executeUpdate();
             return true;

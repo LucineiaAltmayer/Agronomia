@@ -26,7 +26,7 @@ public class DaoLac {
             ps.setDate(1, Date.valueOf(objeto.getFim()));
             ps.setDate(2, Date.valueOf(objeto.getInicio()));
             ps.setString(3, objeto.getObs());
-            ps.setInt(7, objeto.getVaca().getBrinco());
+            ps.setInt(4, objeto.getVaca().getBrinco());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {

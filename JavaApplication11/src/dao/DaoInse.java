@@ -29,10 +29,10 @@ public class DaoInse {
             ps.setInt(3, objeto.getSituacao());
             ps.setInt(4, objeto.getTouro().getCodigo());
                         if (objeto.getTouro() == null){
-                ps.setNull(4, Types.INTEGER);
+                ps.setNull(5, Types.INTEGER);
             }else{
                 ps.setInt(5, objeto.getTouro().getCodigo());    
-            }
+            };
             ps.setInt(6, objeto.getVaca().getBrinco());
             ps.executeUpdate();
             return true;
@@ -50,10 +50,10 @@ public class DaoInse {
             ps.setInt(3, objeto.getSituacao()); 
             ps.setInt(4, objeto.getTouro().getCodigo());
                         if (objeto.getTouro() == null){
-                ps.setNull(4, Types.INTEGER);
+                ps.setNull(5, Types.INTEGER);
             }else{
                 ps.setInt(5, objeto.getTouro().getCodigo());    
-            }
+            };
             ps.setInt(6, objeto.getVaca().getBrinco());
             ps.setInt(7, objeto.getCodigo());
             ps.executeUpdate();
