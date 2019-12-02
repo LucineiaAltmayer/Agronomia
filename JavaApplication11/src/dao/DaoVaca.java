@@ -27,15 +27,15 @@ public class DaoVaca {
             ps.setString(2, objeto.getObs());
             ps.setInt(3, objeto.getOrigem());
             ps.setDate(4, Date.valueOf(objeto.getNascimento()));
-                        if (objeto.getBrinco() == null){
+              if (objeto.getBrinco() == null){
                 ps.setNull(5, Types.INTEGER);
             }else{
                 ps.setInt(5, objeto.getMae().getBrinco());    
             };
                         if (objeto.getRaca() == null){
-                ps.setNull(6, Types.INTEGER);
+                ps.setNull(5, Types.INTEGER);
             }else{
-                ps.setInt(6, objeto.getRaca().getCodigo());    
+                ps.setInt(5, objeto.getRaca().getCodigo());    
             };
             ps.setInt(7, objeto.getBrinco());
             ps.executeUpdate();

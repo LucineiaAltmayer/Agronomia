@@ -39,7 +39,7 @@ public class ListagemInse extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 0, 153));
+        jLabel1.setForeground(java.awt.Color.magenta);
         jLabel1.setText("Listagem Inseminação");
 
         tabela.setModel(new javax.swing.table.DefaultTableModel(

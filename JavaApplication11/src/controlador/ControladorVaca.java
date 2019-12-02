@@ -34,6 +34,7 @@ public class ControladorVaca {
         objeto.setObs(man.jtfObsVaca.getText());
         objeto.setOrigem(Integer.parseInt(man.jtfOrigem.getText()));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
+        objeto.setNascimento(LocalDate.parse(man.jtfNascimento.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setMae((Vaca)man.jcbMae.getSelectedItem());
         objeto.setRaca((Raca)man.jcbRaca.getSelectedItem());
         

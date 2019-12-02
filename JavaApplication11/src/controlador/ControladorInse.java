@@ -7,6 +7,7 @@ package controlador;
 
 import tela.manutencao.ManutencaoInse;
 import dao.DaoInse;
+import dao.DaoTouro;
 import dao.DaoVaca;
 import javax.swing.JOptionPane;
 import modelo.Inseminacao;
@@ -127,7 +128,7 @@ man.dispose();//fechar a tela da manutenção
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
     public static void atualizaComboBovinos(ManutencaoInse man) {
-        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoInse.consultar().toArray());
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTouro.consultar().toArray());
         man.jcbTouro.setModel(defaultComboBoxModel);
 }
     public static void atualizaComboVaca(ManutencaoInse man) {
