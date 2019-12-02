@@ -20,7 +20,7 @@ import java.sql.Types;
  */
 public class DaoVaca {
      public static boolean inserir(Vaca objeto) {
-        String sql = "INSERT INTO vaca (situacao, obs, origem, nascimento, brinco_mae, cod_raca) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO vaca (situacao, obs, origem, nascimento, brinco_mae, cod_raca, brinco) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setInt(1, objeto.getSituacao());
@@ -33,10 +33,11 @@ public class DaoVaca {
                 ps.setInt(5, objeto.getMae().getBrinco());    
             };
                         if (objeto.getRaca() == null){
-                ps.setNull(5, Types.INTEGER);
+                ps.setNull(6, Types.INTEGER);
             }else{
-                ps.setInt(5, objeto.getRaca().getCodigo());    
+                ps.setInt(6, objeto.getRaca().getCodigo());    
             };
+            ps.setInt(7, objeto.getBrinco());
             ps.executeUpdate();
             return true;
         } catch (SQLException | ClassNotFoundException ex) {

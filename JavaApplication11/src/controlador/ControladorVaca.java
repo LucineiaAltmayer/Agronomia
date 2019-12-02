@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import dao.DaoRaca;
 import dao.DaoTouro;
 import tela.manutencao.ManutencaoVaca;
 import dao.DaoVaca;
@@ -29,6 +30,7 @@ public class ControladorVaca {
 
     public static void inserir(ManutencaoVaca man){
         Vaca objeto = new Vaca();
+        objeto.setBrinco(Integer.parseInt(man.jtfBrinco.getText()));
         objeto.setObs(man.jtfObsVaca.getText());
         objeto.setOrigem(Integer.parseInt(man.jtfOrigem.getText()));
         objeto.setSituacao(Integer.parseInt(man.jtfSituacao.getText()));
@@ -125,12 +127,12 @@ man.dispose();//fechar a tela da manutenção
         man.btnAdicionar.setEnabled(false); //desabilitando o botão adicionar
     }
    public static void atualizaComboRaca(ManutencaoVaca man) {
-        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoTouro.consultar().toArray());
+        DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoRaca.consultar().toArray());
         man.jcbRaca.setModel(defaultComboBoxModel);
 }
    
    public static void atualizaComboMae(ManutencaoVaca man) {
         DefaultComboBoxModel defaultComboBoxModel = new DefaultComboBoxModel(DaoVaca.consultar().toArray());
-        man.jcbRaca.setModel(defaultComboBoxModel);
+        man.jcbMae.setModel(defaultComboBoxModel);
 }
 }
